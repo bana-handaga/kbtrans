@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    
+    <link rel="icon" type="image/png" href="/media/the-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/media/the-favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/the-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/media/the-favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/media/the-favicon/site.webmanifest" />
+    
+</head>
+<body>
+    <h1>Pesan: {{ car.make }} {{ car.model }}</h1>
+    <p>Harga Sewa: **Rp{{ car.daily_rate|floatformat:"0" }}** / hari</p>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li style="color: red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Konfirmasi & Bayar</button>
+    </form>
+
+    <a href="{% url 'car_detail' car_id=car.id %}">Batal</a>
+</body>
+</html>

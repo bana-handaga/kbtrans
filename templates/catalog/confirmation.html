@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+
+    
+    <link rel="icon" type="image/png" href="/media/the-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/media/the-favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/the-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/media/the-favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/media/the-favicon/site.webmanifest" />
+
+
+</head>
+
+<body>
+    <h1>🎉 Pemesanan Berhasil Dibuat!</h1>
+    
+    <p>Terima kasih, **{{ booking.user.username }}**!</p>
+    <p>Detail pemesanan Anda:</p>
+    
+    <ul>
+        <li>ID Pemesanan: **#{{ booking.id }}**</li>
+        <li>Mobil: **{{ booking.car.make }} {{ booking.car.model }}**</li>
+        <li>Tanggal Sewa: **{{ booking.start_date }}** s/d **{{ booking.end_date }}** (Total {{ booking.total_days }} hari)</li>
+        <li>Lokasi Ambil: {{ booking.pickup_location }}</li>
+        <li>Lokasi Kembali: {{ booking.return_location }}</li>
+        <li>Total Biaya: **Rp{{ booking.total_price|floatformat:"0" }}**</li>
+        <li>Status: *{{ booking.get_booking_status_display }}*</li>
+    </ul>
+
+    <p>Silakan lakukan pembayaran untuk memfinalisasi pemesanan Anda.</p>
+    <a href="{% url 'car_list' %}">Kembali ke Daftar Mobil</a>
+</body>
+</html>

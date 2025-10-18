@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+     <link rel="icon" type="image/png" href="/media/the-favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/media/the-favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/the-favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/media/the-favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/media/the-favicon/site.webmanifest" />
+    
+</head>
+<body>
+    <a href="{% url 'car_list' %}">Kembali ke Daftar Mobil</a>
+    <h1>Detail Mobil: {{ car.make }} {{ car.model }}</h1>
+    
+    {% if car.image %}
+    <img src="{{ car.image.url }}" alt="Gambar {{ car.make }} {{ car.model }}" style="max-width: 400px; height: auto;">
+    {% else %}
+    <p>Gambar tidak tersedia.</p>
+    {% endif %}
+    
+    <p>Deskripsi: {{ car.description|default:"Tidak ada deskripsi." }}</p>
+    <p>Harga Sewa 24 jam: ** Rp {{ car.daily_rate|floatformat:"g" }} **</p>
+    <p>Harga Sewa 12 jam: ** Rp {{ car.halfday_rate|floatformat:"g" }} **</p>
+    <p>Status: **{{ car.get_status_display }}**</p>
+
+    {% if car.status == 'A' %}
+    <a href="{% url 'book_car' car_id=car.id %}">PESAN SEKARANG</a>
+    {% else %}
+    <p style="color: red;">Mobil sedang tidak tersedia untuk disewa.</p>
+    {% endif %}
+    
+
+<p>Deskripsi: {{ car.description|default:"Tidak ada deskripsi." }}</p>
+</body>
+</html>

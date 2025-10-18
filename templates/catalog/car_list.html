@@ -1,0 +1,40 @@
+{% extends 'adminlte/base.html' %} 
+
+{% block title %}Daftar Mobil Sewa{% endblock %}
+{% block page_title %}Daftar Mobil Tersedia{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% for car in cars %}
+    <div class="col-md-4">
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                {% if car.image %}
+                    <div class="text-center">
+                        <img class="img-fluid" style="height: 150px; object-fit: cover;"
+                             src="{{ car.image.url }}" alt="Gambar Mobil">
+                    </div>
+                {% endif %}
+
+                <h3 class="profile-username text-center mt-3">{{ car.make }} {{ car.model }}</h3>
+                
+                <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                        <b>Harga/Hari</b> <a class="float-right">Rp{{ car.daily_rate|floatformat:"0" }}</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Transmisi</b> <a class="float-right">{{ car.get_transmission_display }}</a>
+                    </li>
+                </ul>
+
+                <a href="{% url 'car_detail' car_id=car.id %}" class="btn btn-primary btn-block"><b>Lihat Detail & Sewa</b></a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <p class="alert alert-warning">Mohon maaf, saat ini tidak ada mobil yang tersedia.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
