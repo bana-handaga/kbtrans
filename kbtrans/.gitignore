@@ -1,0 +1,10 @@
+# Lingkungan Virtual Python
+venv/
+__pycache__/
+*.pyc
+
+# File yang dibuat Django/Database
+db.sqlite3
+# /media
+# /static
+.env  # Jika Anda menggunakan file variabel lingkungan

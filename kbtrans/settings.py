@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-(t6i^ti(uxis07s369pe*&()-2&@+l864xh98u7z@p*v9hn^h7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kembartrans.com']
+ALLOWED_HOSTS = ['kembartrans.com','localhost',]
 
 # Application definition
 
@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'kembartr_cars',
         'USER': 'kembartr_car',
         'PASSWORD': 'syailendra',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'HOST': 'kembar-travel.com',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     },
     'sqlite': {
@@ -127,11 +127,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 import os
-STATIC_URL = "static/"
-MEDIA_ROOT=os.path.join(BASE_DIR,'public')
+STATIC_URL = "/static/"
+MEDIA_ROOT=os.path.join(BASE_DIR,'public/')
 
 MEDIA_URL="/media/"
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
 LOGIN_REDIRECT_URL='/'
 
 
