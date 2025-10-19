@@ -128,7 +128,10 @@ USE_TZ = True
 
 import os
 STATIC_URL = "/static/"
-MEDIA_ROOT=os.path.join(BASE_DIR,'public/')
+# MEDIA_ROOT=os.path.join(BASE_DIR,'public/')
+STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'public'), # A project-level static folder
+    ]
 
 MEDIA_URL="/media/"
 MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
